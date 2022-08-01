@@ -8,7 +8,7 @@ def get_grad(y, x, p, lam, w):
     return np.mean(-y * x * (1 - p), axis=0, keepdims=True).T + lam * w
 
 def get_loss(p, lam, w):
-    return np.mean(np.log(1 / p)) + 0.5 * lam * np.sum(w * w)
+    return np.mean(-np.log(p)) + lam * np.sum(w * w) / 2
 
 def get_hessian(p, x, lam, d):
     p1_p = posterior * (1 - posterior)
